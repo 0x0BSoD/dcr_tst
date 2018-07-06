@@ -1,4 +1,6 @@
-from flask import Flask
+from flask import Flask, Response
+from requests import get
+
 
 app = Flask(__name__)
 default_name = 'Jon Doe'
@@ -18,6 +20,15 @@ def index():
     footer = '</body></html>'
 
     return header + body + footer
+
+
+@app.route('/monster/<name>')
+def get_identicon(name):
+
+    r = get('http://dnmonster:8080/monster/' + name + '?size=80')
+    image = r.content
+
+    return Response(image, mimetype='image/png')
 
 
 @app.route('/ping')
