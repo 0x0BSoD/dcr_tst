@@ -1,8 +1,13 @@
 FROM python:3.4
 
+# user stuff
 RUN groupadd -r uwsgi && useradd -r -g uwsgi uwsgi
-RUN pip install Flask uWSGI requests
 
+# some python
+COPY app/requerments.txt /requerments.txt
+RUN pip install -r requerments.txt
+
+# do some with this sht###
 WORKDIR /app
 COPY app /app
 COPY cmd.sh /
