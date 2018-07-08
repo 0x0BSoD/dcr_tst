@@ -7,11 +7,12 @@ RUN groupadd -r uwsgi && useradd -r -g uwsgi uwsgi
 COPY app/requerments.txt /requerments.txt
 RUN pip install -r requerments.txt
 
-# do some with this sht###
+# copy
 WORKDIR /app
 COPY app /app
 COPY cmd.sh /
 
+# start
 EXPOSE 9090 9191
 USER uwsgi
 
