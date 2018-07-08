@@ -1,5 +1,5 @@
 identidock:
-  build: .
+  image: zlodey23/dcr_tst:auto
   ports:
     - "5000:5000"
   environment:
