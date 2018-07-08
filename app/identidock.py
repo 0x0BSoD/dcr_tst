@@ -35,6 +35,7 @@ def get_identicon(name):
 
     image = cache.get(name)
     if not image:
+        print("Not in cache", flush=True)
         r = get('http://dnmonster:8080/monster/' + name + '?size=80')
         image = r.content
         cache.set(name, image)
